@@ -16,13 +16,14 @@ from configurations import Configuration, values
 
 
 BASE_DIR = dirname(dirname(dirname(__file__)))
+DJANGO_DIR = join(BASE_DIR, 'src')
 
 
 class Base(Configuration):
 
     # Build paths inside the project like this: join(BASE_DIR, "directory")
-    STATICFILES_DIRS = [join(BASE_DIR, 'static')]
-    MEDIA_ROOT = join(BASE_DIR, 'media')
+    STATICFILES_DIRS = [join(DJANGO_DIR, 'static')]
+    MEDIA_ROOT = join(DJANGO_DIR, 'media')
     MEDIA_URL = "/media/"
 
     # Use Django templates using the new Django 1.8 TEMPLATES settings
@@ -30,7 +31,7 @@ class Base(Configuration):
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
             'DIRS': [
-                join(BASE_DIR, 'templates'),
+                join(DJANGO_DIR, 'templates'),
                 # insert more TEMPLATE_DIRS here
             ],
             'APP_DIRS': True,
@@ -75,7 +76,7 @@ class Base(Configuration):
         'django_extensions',
         'authtools',
         'crispy_forms',
-        'sorl.thumbnail',
+        'easy_thumbnails',
 
         'profiles',
         'accounts',
@@ -245,7 +246,7 @@ class Production(Base):
     Base.TEMPLATES[0].update({"APP_DIRS": False})
 
     # Define STATIC_ROOT for the collectstatic command
-    STATIC_ROOT = join(BASE_DIR, '..', 'site', 'static')
+    STATIC_ROOT = join(DJANGO_DIR, '..', 'site', 'static')
 
     # Log everything to the logs directory at the top
     LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
