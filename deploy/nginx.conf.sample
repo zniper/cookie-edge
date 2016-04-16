@@ -1,13 +1,14 @@
 upstream {{ project_name }} {
     server unix:/opt/projects/{{ project_name }}/src/gunicorn.sock fail_timeout=0;
-    # server host:post;
+    # server host:port;
 }
 
 server {
 
     listen 80;
     listen 443 ssl;
-    server_name {{ project_name }};
+
+    server_name {{ project_name }}.com;
     client_max_body_size 10M;
     keepalive_timeout    15;
         

@@ -1,0 +1,22 @@
+#!/bin/bash
+NAME={{ project_name }}
+ENV_DIR=~/.virtualenvs/{{ project_name }}
+DJANGO_DIR=/opt/projects/{{ project_name }}/src
+NUM_WORKERS=4
+DJANGO_WSGI_MODULE={{ project_name }}.wsgi
+GUNICORN_CONFIG={{ project_name }}/gunicorn.conf.py
+
+echo "Starting $NAME as `whoami`"
+
+# Activate the virtual environment
+source $ENV_DIR/bin/activate
+
+# We already have dotenv...
+# export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+# export DJANGO_CONFIGURATION=Development
+# export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+cd $DJANGO_DIR
+
+# Start your Django Unicorn
+# Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
+exec gunicorn -c ${GUNICORN_CONFIG} ${DJANGO_WSGI_MODULE}:application 
