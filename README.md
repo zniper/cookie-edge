@@ -16,11 +16,11 @@
 
 ## Quick start:
 
-1. `$ django-admin.py startproject --template=https://github.com/arocks/edge/archive/master.zip --extension=py,md,html,env my_proj`
+0. `pip install django`
+1. `$ django-admin.py startproject --template=https://github.com/zniper/edge/archive/master.zip --extension=py,md,html,env,conf my_proj`
 2. `$ cd my_proj`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`
-5. `$ cp my_proj/settings/local.sample.env my_proj/settings/local.env` (New!)
 6. `$ python manage.py migrate`
 
 More information at: [http://django-edge.readthedocs.org/][docs]
