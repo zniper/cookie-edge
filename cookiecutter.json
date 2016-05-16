@@ -1,0 +1,37 @@
+{
+    "project_name": "project_name",
+    "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_') }}",
+    "author_name": "Your Name",
+    "email": "Your email",
+    "description": "A short description of the project.",
+    "domain_name": "example.com",
+    "version": "0.1.0",
+    "timezone": "UTC",
+    "now": "{% now 'local' %}",
+    "year": "{{ cookiecutter.now[:4] }}",
+    "available_languages": "[('en', _('English')),]",
+    "default_language": "en-us",
+    "database_engine": [
+        "sqlite",
+        "mysql",
+        "postgres",
+        "oracle",
+        "postgis",
+        "mysqlgis",
+        "oraclegis"
+    ],
+    "database_name": "{{ cookiecutter.project_slug }}{% if cookiecutter.database_engine == 'sqlite' %}.db{% endif %}",
+    "database_user": "{{ cookiecutter.project_slug }}",
+    "database_password": "",
+    "database_host": "127.0.0.1",
+    "database_port": "",
+    "use_celery": "n",
+    "use_sentry": "n",
+    "use_fabric": "y",
+    "dump_requirement_versions": "y",
+    "_copy_without_render": [
+        "README.md",
+        "*accounts/*",
+        "*static/*"
+    ]
+}

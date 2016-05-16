@@ -1,0 +1,17 @@
+{% raw %}{% extends "admin/base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %}{% include "_brandname.html" %} Admin{% endblock %}
+
+{% block branding %}
+  <a class="navbar-brand" href="{% url 'admin:index' %}">{% include "_brandname.html" %} Admin</a>
+{% endblock %}
+
+{% block nav-global %}
+  <a class="btn btn-default" href="{% url 'home' %}">
+  {% comment %}<span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> Switch to Site</a>{% endcomment %}
+{% endblock %}
+
+{% block extrahead %}{{ block.super }}
+  <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
+{% endblock %}{% endraw %}

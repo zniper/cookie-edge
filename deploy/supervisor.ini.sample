@@ -1,8 +1,0 @@
-[program:gunicorn_{{ project_name }}]
-command=/opt/projects/{{ project_name }}/src/gunicorn.sh
-user=admin
-autostart=true
-stdout_logfile=/opt/projects/{{ project_name }}/logs/supervisor.log
-autorestart=true
-redirect_stderr=true
-environment=LANG="en-us",LC_ALL="en-us",LC_LANG="en-us"

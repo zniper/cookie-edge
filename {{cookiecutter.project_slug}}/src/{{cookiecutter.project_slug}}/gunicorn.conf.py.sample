@@ -1,0 +1,10 @@
+from __future__ import unicode_literals
+import multiprocessing
+
+PROJECT_DIR = "/opt/projects/{{ cookiecutter.project_slug }}"
+
+bind = "unix:{0}/src/gunicorn.sock".format(PROJECT_DIR)
+workers = 2
+errorlog = "{0}/logs/gunicorn_error.log".format(PROJECT_DIR)
+loglevel = "error"
+proc_name = "{{ cookiecutter.project_slug }}"

@@ -1,0 +1,8 @@
+[program:gunicorn_{{ cookiecutter.project_slug }}]
+command=/opt/projects/{{ cookiecutter.project_slug }}/src/gunicorn.sh
+user=admin
+autostart=true
+stdout_logfile=/opt/projects/{{ cookiecutter.project_slug }}/logs/supervisor.log
+autorestart=true
+redirect_stderr=true
+environment=LANG="en-us",LC_ALL="en-us",LC_LANG="en-us"
