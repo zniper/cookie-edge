@@ -81,9 +81,9 @@ def replace_file_placeholder(file_path, placeholder, value):
 
 def set_secret_key(env_file):
     # Generate a SECRET_KEY that matches the Django standard
-    SECRET_KEY = get_random_string()
+    secret_key = get_random_string()
     # Call replace placeholder function
-    replace_file_placeholder(env_file, "NOT.THIS.SECRET", SECRET_KEY)
+    replace_file_placeholder(env_file, "NOT.THIS.SECRET", secret_key)
 
 
 def make_secret_key():
@@ -127,8 +127,20 @@ class MyLooseVersion(LooseVersion):
 
     """
     def parse(self, vstring):
-        super().parse(vstring)
-        self.version = list(filter(lambda x:isinstance(x, int), self.version))
+        LooseVersion.parse(self, vstring)
+        self.int_version = list(filter(lambda x:isinstance(x, int),
+                                       self.version))
+
+    def _cmp (self, other):
+        if isinstance(other, str):
+            other = LooseVersion(other)
+
+        if self.int_version == other.int_version:
+            return 0
+        if self.int_version < other.int_version:
+            return -1
+        if self.int_version > other.int_version:
+            return 1
 
 
 def get_latest_version(package):
@@ -141,7 +153,7 @@ def get_latest_version(package):
         data = json.loads(data)
     except ValueError as ex:
         return None
-    versions = sorted(map(str, data["releases"].keys()), key=MyLooseVersion,
+    versions = sorted(data["releases"].keys(), key=MyLooseVersion,
                   reverse=True)
     return versions[0] if versions else None
 

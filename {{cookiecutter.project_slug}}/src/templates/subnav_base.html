@@ -1,0 +1,16 @@
+{% raw %}{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block container %}
+  <div class="row">
+      <div class="col-md-3 columns">
+          {% block subnav %}
+          {% endblock %}
+      </div>
+      <div class="col-md-9 columns">
+          {% block body %}
+          {% endblock %}
+      </div>
+  </div>
+{% endblock %}{% endraw %}
