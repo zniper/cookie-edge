@@ -30,7 +30,6 @@
     "use_fabric": "y",
     "dump_requirement_versions": "y",
     "_copy_without_render": [
-        "README.md",
         "*accounts/*",
         "*static/*"
     ]

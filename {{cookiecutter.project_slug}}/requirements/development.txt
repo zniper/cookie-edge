@@ -3,7 +3,7 @@ django-debug-toolbar>=1.4
 Werkzeug>=0.11.2
 django-autofixture==0.12.1
 
-#Testing
+# Testing
 selenium
 django-nose
 nose
