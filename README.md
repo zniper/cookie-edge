@@ -17,7 +17,7 @@
 ## Quick start:
 
 0. `$ pip install cookiecutter requirements-parser`
-1. `$ cookiecutter https://github.com/zniper/cookie-edge/archive/master.zip`
+1. `$ cookiecutter https://github.com/zniper/cookie-edge.git`
 2. `$ cd <NEW_PROJECT>`
 3. `$ pip install -r requirements.txt `
 4. `$ cd src`

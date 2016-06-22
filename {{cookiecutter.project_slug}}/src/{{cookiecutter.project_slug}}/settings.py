@@ -67,7 +67,7 @@ class Base(Configuration):
     # Raises ImproperlyConfigured exception if SECRET_KEY not in os.environ
     SECRET_KEY = values.SecretValue()
 
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = values.ListValue([])
 
     # Application definition
 
@@ -85,7 +85,7 @@ class Base(Configuration):
         'django_extensions',
         'crispy_forms',
         'easy_thumbnails',
-        {% if cookiecutter.use_sentry | lower == 'y' %}'raven.contrib.django.raven_compat', {% endif %}
+        {% if cookiecutter.use_sentry | lower == 'y' %}'raven.contrib.django.raven_compat',{% endif %}
         'account',
         'bootstrap3',
     )
@@ -155,8 +155,6 @@ class Base(Configuration):
 
     USE_TZ = True
 
-    ALLOWED_HOSTS = []
-
     # Crispy Form Theme - Bootstrap 3
     CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -173,7 +171,7 @@ class Base(Configuration):
     LOGIN_URL = reverse_lazy("account_login")
 
     THUMBNAIL_EXTENSION = 'png'  # Or any extn for your thumbnails
-    {% if cookiecutter.use_sentry|lower == 'y' %}
+    {% if cookiecutter.use_sentry | lower == 'y' %}
     RAVEN_CONFIG = {
         'dsn': values.Value(environ_name='RAVEN_CONFIG_DNS'),
     }
@@ -295,8 +293,6 @@ class Development(Base):
 class Production(Base):
     DEBUG = values.BooleanValue(False)
     TEMPLATE_DEBUG = values.BooleanValue(False)
-
-    ALLOWED_HOSTS = values.ListValue([])
 
     # Cache the templates in memory for speed-up
     loaders = [
