@@ -1,3 +1,4 @@
 -r base.txt
 django-compressor==2.0
 gunicorn
+uwsgi

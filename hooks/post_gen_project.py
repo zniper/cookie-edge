@@ -209,6 +209,13 @@ def create_env_file():
     )
     shutil.copy(sample_env_file, env_file)
 
+def remove_fabfile():
+    fab_file = os.path.join(
+        PROJECT_DIRECTORY,
+        'src',
+        'fabfile.py'
+    )
+    os.remove(fab_file)
 
 # 1. Generates and saves random secret key
 make_secret_key()
@@ -226,3 +233,7 @@ if '{{ cookiecutter.dump_requirement_versions }}'.lower() == 'y':
 
 # 5. Create .env file from .env.sample file
 create_env_file()
+
+# 6. Remove fabfile .py if fabric is not used.
+if '{{ cookiecutter.use_fabric }}'.lower() == 'n':
+    remove_fabfile()
