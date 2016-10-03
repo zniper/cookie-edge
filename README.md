@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/zniper/cookie-edge.svg?branch=master)](https://travis-ci.org/zniper/cookie-edge)
 
+FEATURES: Python 2.7 or 3.4 / Django 1.7 support, Bootstrap themed, User Registration/Sign up, User 
+Profiles
+
 **A fantastic Django project starter, combination of Cookiecutter and Edge template.**
 
 Version 1.0.1
