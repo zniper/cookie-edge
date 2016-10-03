@@ -4,6 +4,8 @@
 
 **A fantastic Django project starter, combination of Cookiecutter and Edge template.**
 
+Version 1.0.1
+
 ## Features
 
 * Work with Cookiecutter, accept various of initial information

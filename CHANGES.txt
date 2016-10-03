@@ -1,0 +1,4 @@
+1.0.1 - 2016-10-02
+    
+    * Correct TIME_ZONE and SITE_ID entries inside .env.sample
+    * Add CHANGES.txt (this one, yay!)
